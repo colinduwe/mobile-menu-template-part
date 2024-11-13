@@ -29,6 +29,13 @@
 				"activate": true
 			}
 		},
+        {
+            "step": "importWxr",
+            "file": {
+                "resource": "url",
+                "url": "https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/blueprint-content.xml"
+            }
+        },
 		{
 			"step": "login",
 			"username": "admin",
