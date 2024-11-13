@@ -33,7 +33,7 @@
             "step": "importWxr",
             "file": {
                 "resource": "url",
-                "url": "https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/blueprint-content.xml"
+                "url": "https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/blueprint-content.xml"
             }
         },
 		{
