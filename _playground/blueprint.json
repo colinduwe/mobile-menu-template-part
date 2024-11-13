@@ -1,0 +1,38 @@
+
+{
+	"landingPage": "/wp-admin/site-editor.php",
+	"preferredVersions": {
+		"php": "8.0",
+		"wp": "beta"
+	},
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginZipFile": {
+				"resource": "wordpress.org/plugins",
+				"slug": "gutenberg"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginZipFile": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/mobile-menu-template-part.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "login",
+			"username": "admin",
+			"password": "password"
+		}
+	]
+}
