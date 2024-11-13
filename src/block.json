@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cdc/mobile-menu-template-part",
+	"version": "0.1.0",
+	"title": "Mobile Menu Template Part",
+	"category": "widgets",
+	"icon": "menu",
+	"description": "A block that displays a hamburger to reveal a template part in its modal rather than a navigation menu.",
+	"example": {},
+	"attributes": {
+		"label": {
+			"type": "string"
+		},
+		"menuSlug": {
+			"type": "string"
+		},
+		"overlayMenu": {
+			"type": "string",
+			"default": "mobile"
+		},
+		"icon": {
+			"type": "string",
+			"default": "handle"
+		},
+		"hasIcon": {
+			"type": "boolean",
+			"default": true
+		},
+		"overlayBackgroundColor": {
+			"type": "string"
+		},
+		"customOverlayBackgroundColor": {
+			"type": "string"
+		},
+		"overlayTextColor": {
+			"type": "string"
+		},
+		"customOverlayTextColor": {
+			"type": "string"
+		}
+	},
+	"providesContext": {
+		"overlayTextColor": "overlayTextColor",
+		"customOverlayTextColor": "customOverlayTextColor",
+		"overlayBackgroundColor": "overlayBackgroundColor",
+		"customOverlayBackgroundColor": "customOverlayBackgroundColor"
+	},
+	"supports": {
+		"html": false,
+		"interactivity": true,
+		"renaming": false,
+		"reusable": false,
+		"__experimentalSlashInserter": true
+	},
+	"textdomain": "mobile-menu-template-part",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js"
+}

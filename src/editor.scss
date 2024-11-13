@@ -1,0 +1,252 @@
+@import "node_modules/@wordpress/base-styles/variables";
+@import "node_modules/@wordpress/base-styles/mixins";
+@import "node_modules/@wordpress/base-styles/breakpoints";
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-cdc-mobile-menu-template-part input[type="text"] {
+	font-size: 1em;
+	color: inherit;
+	background: inherit;
+	border: 0;
+}
+
+/**
+ * Mobile menu.
+ */
+
+ // These needs extra specificity in the editor.
+.wp-block-cdc-mobile-menu-template-part__responsive-container:not(.is-menu-open) {
+	.components-button.wp-block-cdc-mobile-menu-template-part__responsive-container-close {
+		@include break-small {
+			display: none;
+		}
+	}
+}
+
+// Emulate the fullscreen editing inside the editor.
+// Most of this can be removed when the iframe lands.
+
+// When not fullscreen.
+.wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open {
+	position: fixed;
+	top: $admin-bar-height-big + $header-height + $block-toolbar-height + $border-width;
+
+	@include break-medium() {
+		top: $admin-bar-height + $header-height + $border-width;
+	}
+
+	// Navigation sidebar rules.
+	@include break-medium() {
+		left: $admin-sidebar-width-collapsed;
+	}
+
+	@include break-large() {
+		left: $admin-sidebar-width;
+	}
+}
+
+.is-mobile-preview .wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open,
+.is-tablet-preview .wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open {
+	top: $admin-bar-height + $header-height + $block-toolbar-height + $border-width;
+}
+
+// When fullscreen.
+.is-fullscreen-mode {
+	.wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open {
+		left: 0; // Unset the value from non fullscreen mode.
+		top: $admin-bar-height-big + $header-height + $block-toolbar-height + $border-width;
+
+		@include break-medium() {
+			top: $header-height + $border-width;
+		}
+	}
+
+	.is-mobile-preview .wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open,
+	.is-tablet-preview .wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open {
+		top: $header-height + $block-toolbar-height + $border-width;
+	}
+}
+
+// `body.editor-styles-wrapper` ensures this only applies to the iframed editor.
+body.editor-styles-wrapper .wp-block-cdc-mobile-menu-template-part__responsive-container.is-menu-open {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(--cdc-mobile-menu-template-part-bg-color);
+}
+
+// The menu and close buttons need higher specificity in the editor.
+.components-button.wp-block-cdc-mobile-menu-template-part__responsive-container-open.wp-block-cdc-mobile-menu-template-part__responsive-container-open,
+.components-button.wp-block-cdc-mobile-menu-template-part__responsive-container-close.wp-block-cdc-mobile-menu-template-part__responsive-container-close {
+	padding: 0;
+	height: auto;
+	color: inherit;
+}
+
+.components-heading.wp-block-cdc-mobile-menu-template-part-off-canvas-editor__title {
+	margin: 0;
+}
+
+.wp-block-cdc-mobile-menu-template-part-off-canvas-editor__header {
+	margin-bottom: $grid-unit-10;
+}
+
+// Customize the mobile editing.
+// This can be revisited in the future, but for now, inherit design from the parent.
+.is-menu-open .wp-block-cdc-mobile-menu-template-part__responsive-container-content * {
+	.block-list-appender {
+		margin-top: $grid-unit-20;
+	}
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+// Space spinner to give it breathing
+// room when block is selected and has focus outline.
+.wp-block-cdc-mobile-menu-template-part__loading-indicator-container {
+	padding: $grid-unit-10 $grid-unit-15;
+}
+
+.wp-block-cdc-mobile-menu-template-part .wp-block-cdc-mobile-menu-template-part__uncontrolled-inner-blocks-loading-indicator {
+	margin-top: 0;
+}
+
+@keyframes fadeouthalf {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0.5;
+	}
+}
+
+.wp-block-cdc-mobile-menu-template-part-delete-menu-button {
+	width: 100%;
+	justify-content: center;
+	margin-bottom: $grid-unit-20;
+}
+
+// increased specificity to override button variant
+// for the manage menus button in the advanced area
+// of the navigation block
+.components-button.is-link.wp-block-cdc-mobile-menu-template-part-manage-menus-button {
+	margin-bottom: $grid-unit-20;
+}
+
+.wp-block-cdc-mobile-menu-template-part__overlay-menu-preview {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	background-color: $gray-100;
+	padding: 0 $grid-unit-30;
+
+	// Adding !important to override default 40px size.
+	// Ref - https://github.com/WordPress/gutenberg/pull/65075#discussion_r1746282734
+	height: $grid-unit-40 * 2 !important;
+
+	margin-bottom: $grid-unit-15;
+
+	&.open {
+		box-shadow: inset 0 0 0 $border-width $gray-200;
+		outline: 1px solid transparent; // Box shadow is removed in high contrast mode, a transparent outline is made opaque.
+		background-color: $white;
+	}
+}
+
+// Temp - hide toolbar component when Nav Menu Selector is empty.
+// TODO - extract state to common hook or parent component to avoid render.
+.wp-block-cdc-mobile-menu-template-part__toolbar-menu-selector.components-toolbar-group:empty {
+	display: none;
+}
+
+// Temp - hide adjacent <hr>s when Nav Menu Selector is empty.
+// TODO - extract state to common hook or parent component to avoid render of <hr>.
+.wp-block-cdc-mobile-menu-template-part-placeholder__actions hr + hr {
+	display: none;
+}
+
+/**
+ * Navigation selector styles
+ */
+.wp-block-cdc-mobile-menu-template-part__navigation-selector {
+	margin-bottom: $grid-unit-20;
+	width: 100%;
+}
+
+.wp-block-cdc-mobile-menu-template-part__navigation-selector-button {
+	border: 1px solid;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.wp-block-cdc-mobile-menu-template-part__navigation-selector-button__icon {
+	flex: 0 0 auto;
+}
+
+.wp-block-cdc-mobile-menu-template-part__navigation-selector-button__label {
+	flex: 0 1 auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.wp-block-cdc-mobile-menu-template-part__navigation-selector-button--createnew {
+	border: 1px solid;
+	margin-bottom: $grid-unit-20;
+	width: 100%;
+}
+
+// Buttons inside a disabled component get semitransparent when there's a clickthrough overlay.
+// Since this navigation button is content rather than UI, however, override that.
+.wp-block-cdc-mobile-menu-template-part__responsive-container-open.components-button {
+	opacity: 1;
+}
+
+.wp-block-cdc-mobile-menu-template-part__menu-inspector-controls {
+	overflow-x: auto;
+
+	@include custom-scrollbars-on-hover(transparent, $gray-600);
+}
+
+.wp-block-cdc-mobile-menu-template-part__menu-inspector-controls__empty-message {
+	margin-left: 24px;
+}
+
+.wp-block-cdc-mobile-menu-template-part__overlay-menu-icon-toggle-group {
+	// Counteract the margin added by the block inspector.
+	margin-bottom: $grid-unit-20;
+}
+
+.wp-block-cdc-mobile-menu-template-part__responsive-container{
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+	&.is-menu-open{
+		animation: overlay-menu__fade-in-animation .1s ease-out;
+        animation-fill-mode: forwards;
+        background-color: var(--cdc-mobile-menu-template-part-bg-color);
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        padding: clamp(1rem, var(--wp--style--root--padding-top), 20rem) clamp(1rem, var(--wp--style--root--padding-right), 20rem) clamp(1rem, var(--wp--style--root--padding-bottom), 20rem) clamp(1rem, var(--wp--style--root--padding-left), 20em);
+        z-index: 100000;
+	}
+}
