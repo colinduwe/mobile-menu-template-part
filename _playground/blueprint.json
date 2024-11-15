@@ -39,7 +39,7 @@
 	{
 		"step": "setSiteOptions",
             	"options": {
-                	"site_logo": "15",
+                	"site_logo": "15"
             	}
 	},
 		{
