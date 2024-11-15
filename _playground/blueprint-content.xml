@@ -75,7 +75,7 @@
 	<generator>https://wordpress.org/?v=6.7-RC5</generator>
 
 <image>
-	<url>https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/WordPress-logotype-wmark-150x150.png</url>
+	<url>https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/WordPress-logotype-wmark.png</url>
 	<title>My WordPress Website</title>
 	<link>https://playground.wordpress.net/scope:patient-vintage-country</link>
 	<width>32</width>
@@ -451,7 +451,7 @@ Commenter avatars come from <a href="https://gravatar.com/">Gravatar</a>.]]></wp
 		<link>https://playground.wordpress.net/scope:patient-vintage-country/wordpress-logotype-wmark/</link>
 		<pubDate>Thu, 14 Nov 2024 19:59:56 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">https://playground.wordpress.net/scope:patient-vintage-country/wp-content/uploads/2024/11/WordPress-logotype-wmark.png</guid>
+		<guid isPermaLink="false">https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/WordPress-logotype-wmark.png</guid>
 		<description></description>
 		<content:encoded><![CDATA[]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
