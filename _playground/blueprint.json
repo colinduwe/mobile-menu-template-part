@@ -36,6 +36,12 @@
                 "url": "https://raw.githubusercontent.com/colinduwe/mobile-menu-template-part/main/_playground/blueprint-content.xml"
             }
         },
+	{
+		"step": "setSiteOptions",
+            	"options": {
+                	"site_logo": "15",
+            	}
+	},
 		{
 			"step": "login",
 			"username": "admin",
