@@ -88,7 +88,6 @@ const { state, actions } = store( 'cdc/mobile-menu-template-part', {
 		},
 		closeMenu( menuClosedOn = 'click' ) {
 			const context = getContext();
-			const { ref } = getElement();
 			state.menuOpenedBy[ menuClosedOn ] = false;
 
 			if ( ! state.isMenuOpen ) {

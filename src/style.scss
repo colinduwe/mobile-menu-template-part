@@ -41,6 +41,52 @@
         overflow: auto;
         padding: clamp(1rem, var(--wp--style--root--padding-top), 20rem) clamp(1rem, var(--wp--style--root--padding-right), 20rem) clamp(1rem, var(--wp--style--root--padding-bottom), 20rem) clamp(1rem, var(--wp--style--root--padding-left), 20em);
         z-index: 100000;
+        .wp-block-navigation__submenu-icon {
+            display: none;
+        }
+        // Always expand/unfold submenus inside the modal.
+			.has-child .wp-block-navigation__submenu-container {
+				// Unset CSS that hides dropdown menus.
+				opacity: 1;
+				visibility: visible;
+				height: auto;
+				width: auto;
+				overflow: initial;
+				min-width: 200px;
+
+				// Position and style.
+				position: static;
+				border: none;
+				padding-left: 2rem;
+				padding-right: 2rem;
+			}
+
+			// Space unfolded items using gap and padding for submenus.
+			.wp-block-navigation__submenu-container,
+			.wp-block-navigation__container {
+				gap: inherit;
+			}
+
+			// Apply top padding to nested submenus.
+			.wp-block-navigation__submenu-container {
+				padding-top: var(--wp--style--block-gap, 2em);
+                background-color: inherit;
+			}
+
+			// A default padding is added to submenu items. It's not appropriate inside the modal.
+			.wp-block-navigation-item__content {
+				padding: 0;
+			}
+
+			// Default column display for overlay menu contents.
+			.wp-block-navigation__container,
+			.wp-block-navigation-item,
+			.wp-block-page-list {
+				display: flex;
+				flex-direction: column;
+				// Inherit alignment settings from container.
+				align-items: var(--navigation-layout-justification-setting, initial);
+			}
 	}
 }
 // Button to open the menu.
